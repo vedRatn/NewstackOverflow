@@ -71,7 +71,7 @@ module API
 		questions += result["items"]
 		page+=1
 		result = get(@@URL_START + "users/#{user_id}/questions?key=#{@@API_KEY}&page=#{page}&pagesize=#{pagesize}&order=desc&sort=votes" + @@URL_END + "&filter=!bULULQb5)kbksz")
-		if result.nil?
+		if result.nil? or result["items"].nil?
 		  break
 	  	end
 	      end
@@ -89,7 +89,7 @@ module API
 		answers+= result["items"]
 		page+=1
 		result = get(@@URL_START + "users/#{user_id}/answers?key=#{@@API_KEY}&page=#{page}&pagesize=#{pagesize}&order=desc&sort=votes" + @@URL_END + "&filter=!bULULfcU_Ma1As")
-		if result.nil?
+		if result.nil? or result["items"].nil?
 		  break
 	  	end
 	      end
