@@ -63,11 +63,11 @@ module API
 
     def self.get_user_questions(user_id,options={})
       page = options[:page] || 1
-      pagesize = options[:pagesize] || 100
+      pagesize = options[:pagesize] || 30
       questions = Array.new
       result = get(@@URL_START + "users/#{user_id}/questions?key=#{@@API_KEY}&page=#{page}&pagesize=#{pagesize}&order=desc&sort=votes" + @@URL_END + "&filter=!bULULQb5)kbksz")
       if !result.nil?
-	      while result["items"].any?
+	      while page <= 1
 		questions += result["items"]
 		page+=1
 		result = get(@@URL_START + "users/#{user_id}/questions?key=#{@@API_KEY}&page=#{page}&pagesize=#{pagesize}&order=desc&sort=votes" + @@URL_END + "&filter=!bULULQb5)kbksz")
@@ -81,11 +81,11 @@ module API
 
     def self.get_user_answers(user_id, options={})
       page = options[:page] || 1
-      pagesize = options[:pagesize] || 100
+      pagesize = options[:pagesize] || 30
       answers = Array.new
       result = get(@@URL_START + "users/#{user_id}/answers?key=#{@@API_KEY}&page=#{page}&pagesize=#{pagesize}&order=desc&sort=votes" + @@URL_END + "&filter=!bULULfcU_Ma1As")
       if !result.nil?
-	      while result["items"].any?
+	      while page <= 1
 		answers+= result["items"]
 		page+=1
 		result = get(@@URL_START + "users/#{user_id}/answers?key=#{@@API_KEY}&page=#{page}&pagesize=#{pagesize}&order=desc&sort=votes" + @@URL_END + "&filter=!bULULfcU_Ma1As")
