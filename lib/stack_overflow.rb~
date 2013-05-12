@@ -122,10 +122,10 @@ module API
       }
       return ans.join(" ")
     end
-    def self.get_question_tags(id)
-      result = get(@@URL_START + "questions/#{id}?key=#{@@API_KEY}&order=desc&sort=activity" + @@URL_END)
+    def self.get_questions(ids)
+      result = get(@@URL_START + "questions/#{ids}?key=#{@@API_KEY}&order=desc&sort=activity" + @@URL_END)
       return nil if result.nil?
-      return result["items"][0]["tags"]
+      return result["items"]
     end
   end
 end
