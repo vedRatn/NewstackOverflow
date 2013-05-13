@@ -63,7 +63,7 @@ module API
 
     def self.get_user_questions(user_id,options={})
       page = options[:page] || 1
-      pagesize = options[:pagesize] || 30
+      pagesize = options[:pagesize] || 100
       questions = Array.new
       result = get(@@URL_START + "users/#{user_id}/questions?key=#{@@API_KEY}&page=#{page}&pagesize=#{pagesize}&order=desc&sort=votes" + @@URL_END + "&filter=!bULULQb5)kbksz")
       if !result.nil?
@@ -81,7 +81,7 @@ module API
 
     def self.get_user_answers(user_id, options={})
       page = options[:page] || 1
-      pagesize = options[:pagesize] || 30
+      pagesize = options[:pagesize] || 100
       answers = Array.new
       result = get(@@URL_START + "users/#{user_id}/answers?key=#{@@API_KEY}&page=#{page}&pagesize=#{pagesize}&order=desc&sort=votes" + @@URL_END + "&filter=!bULULfcU_Ma1As")
       if !result.nil?
