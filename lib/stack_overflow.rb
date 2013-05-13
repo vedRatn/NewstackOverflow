@@ -107,7 +107,7 @@ module API
     def self.get_tags(options={})
       page = options[:page] || 1
       pagesize = options[:pagesize] || 30 
-      result=get(@@URL_START + "tags?key=#{@@API_KEY}&page=#{page}&page_size=#{pagesize}&order=desc&sort=popular" + @@URL_END)
+      result=get(@@URL_START + "tags?key=#{@@API_KEY}&page=#{page}&pagesize=#{pagesize}&order=desc&sort=popular" + @@URL_END)
       return nil if result["items"].nil?
       result["items"]
     end
@@ -122,8 +122,10 @@ module API
       }
       return ans.join(" ")
     end
-    def self.get_questions(ids)
-      result = get(@@URL_START + "questions/#{ids}?key=#{@@API_KEY}&order=desc&sort=activity" + @@URL_END)
+    def self.get_questions(ids,options={})
+      page = options[:page] || 1
+      pagesize = options[:pagesize] || 100
+      result = get(@@URL_START + "questions/#{ids}?key=#{@@API_KEY}&page=#{page}&pagesize=#{pagesize}&order=desc&sort=activity" + @@URL_END)
       return nil if result.nil?
       return result["items"]
     end
