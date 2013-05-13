@@ -67,7 +67,7 @@ module API
       questions = Array.new
       result = get(@@URL_START + "users/#{user_id}/questions?key=#{@@API_KEY}&page=#{page}&pagesize=#{pagesize}&order=desc&sort=votes" + @@URL_END + "&filter=!bULULQb5)kbksz")
       if !result.nil?
-	      while page <= 1
+	      while page <= 1 and !result["items"].nil?
 		questions += result["items"]
 		page+=1
 		result = get(@@URL_START + "users/#{user_id}/questions?key=#{@@API_KEY}&page=#{page}&pagesize=#{pagesize}&order=desc&sort=votes" + @@URL_END + "&filter=!bULULQb5)kbksz")
@@ -85,7 +85,7 @@ module API
       answers = Array.new
       result = get(@@URL_START + "users/#{user_id}/answers?key=#{@@API_KEY}&page=#{page}&pagesize=#{pagesize}&order=desc&sort=votes" + @@URL_END + "&filter=!bULULfcU_Ma1As")
       if !result.nil?
-	      while page <= 1
+	      while page <= 1 and !result["items"].nil?
 		answers+= result["items"]
 		page+=1
 		result = get(@@URL_START + "users/#{user_id}/answers?key=#{@@API_KEY}&page=#{page}&pagesize=#{pagesize}&order=desc&sort=votes" + @@URL_END + "&filter=!bULULfcU_Ma1As")
