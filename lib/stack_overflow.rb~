@@ -129,6 +129,14 @@ module API
       return nil if result.nil?
       return result["items"]
     end
+
+    def self.get_answers(ids , options={})
+      	page = options[:page] || 1
+      	pagesize = options[:pagesize] || 100
+	result = get(@@URL_START + "answers/#{ids}?key=#{@@API_KEY}&page=#{page}&pagesize=#{pagesize}&order=desc&sort=activity" + @@URL_END + "&filter=!bZfseC9*h8edv7")
+	return nil if result.nil?
+	return result["items"]
+    end
   end
 end
 
